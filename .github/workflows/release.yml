@@ -37,6 +37,6 @@ jobs:
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
 
       - name: Release
-        run: yarn release:ci
+        run: npm run release:ci
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

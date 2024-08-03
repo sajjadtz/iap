@@ -21,13 +21,13 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm run install --frozen-lockfile
 
       - name: Run TypeScript
-        run: yarn lint:tsc
+        run: npm run lint:tsc
 
       - name: Format & Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Check for changes
         run: git diff --exit-code HEAD

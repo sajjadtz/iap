@@ -6,12 +6,12 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "lint": "yarn lint:tsc && yarn lint:eslint && yarn lint:prettier",
+    "lint": "npm run lint:tsc && npm run lint:eslint && npm run lint:prettier",
     "lint:tsc": "lerna run lint:tsc",
     "lint:eslint": "eslint --fix '**/*.ts'",
     "lint:prettier": "prettier --write \"packages/**/*.{ts,json,md}\"",
-    "format": "git ls-files -m | xargs yarn prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
-    "prepare": "yarn build",
+    "format": "git ls-files -m | xargs npm run prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
+    "prepare": "npm run build",
     "release": "env $(cat .env | xargs) lerna publish --no-private",
     "release:ci": "lerna publish --yes --no-private"
   },

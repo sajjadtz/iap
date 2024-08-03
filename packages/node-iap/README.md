@@ -5,7 +5,7 @@ Node.js library for Apple and Google IAP.
 ## Installation
 
 ```bash
-yarn add @jeremybarbet/node-iap
+npm run add @jeremybarbet/node-iap
 ```
 
 ### Google
@@ -52,7 +52,7 @@ You can find an example in the [example](./example/index.ts) directory.
 You will first, need to duplicate the `data.example.json` file, rename it `data.json` and provide your own Apple and Google credentials and receipt data. Then you can run the example:
 
 ```bash
-yarn ts-node ./packages/node-iap/example/index.ts
+npm run ts-node ./packages/node-iap/example/index.ts
 ```
 
 ## Supported platforms

@@ -10,7 +10,7 @@ Typescript definitions for Google API services.
 ## Installation
 
 ```bash
-yarn add @jeremybarbet/google-api-types
+npm run add @jeremybarbet/google-api-types
 ```
 
 ## Usage

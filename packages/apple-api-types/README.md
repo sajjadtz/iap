@@ -10,7 +10,7 @@ Typescript definitions for Apple API services.
 ## Installation
 
 ```bash
-yarn add @jeremybarbet/apple-api-types
+npm run add @jeremybarbet/apple-api-types
 ```
 
 ## Usage

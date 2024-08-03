@@ -1,9 +1,42 @@
-import { type DynamicModule, Module } from '@nestjs/common';
+import {
+  ConfigurableModuleAsyncOptions,
+  ConfigurableModuleBuilder,
+  DynamicModule,
+  Module,
+} from "@nestjs/common";
 
-import { type IAPConfig, IAP_CONFIG, IAPService } from './iap.service';
+import { IAPConfig, IAP_CONFIG, IAPService } from './iap.service';
+
+export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
+  new ConfigurableModuleBuilder<IAPConfig>()
+    .setClassMethodName("forRoot")
+    .build();
 
 @Module({})
 export class IAPModule {
+  static forRootAsync(
+    options: ConfigurableModuleAsyncOptions<IAPConfig>,
+    isGlobal = true
+  ): DynamicModule {
+    if (!options.useFactory) {
+      throw new Error(
+        `The asynchronous configurations are missing. Expected : "useFactory".`
+      );
+    }
+    return {
+      global: true,
+      module: IAPModule,
+      providers: [
+        {
+          provide: IAP_CONFIG,
+          useFactory: options.useFactory,
+        },
+        IAPService,
+      ],
+      exports: [IAPService],
+    };
+  }
+
   static forRoot(config: IAPConfig): DynamicModule {
     return {
       global: true,

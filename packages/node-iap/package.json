@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint:tsc": "yarn tsc -p tsconfig.json --noEmit --skipLibCheck"
+    "lint:tsc": "npm run tsc -p tsconfig.json --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@jeremybarbet/apple-api-types": "1.4.1",

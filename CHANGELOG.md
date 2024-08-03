@@ -160,4 +160,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - add lerna debug to gitignore ([18b48a2](https://github.com/jeremybarbet/iap/commit/18b48a231eb18101a2b0ef4f4fb0e9bea70592a6))
 - add licenses files ([ffcc0e1](https://github.com/jeremybarbet/iap/commit/ffcc0e15125caeb6d65e1a84083fd5a6c27d603d))
 - configure lerna changelog ([af3f361](https://github.com/jeremybarbet/iap/commit/af3f361ea1a452f50044046d5a0e32f6762c366c))
-- remove exact flag on yarn command ([2c367ef](https://github.com/jeremybarbet/iap/commit/2c367ef0f10b2dd32960973819f156b608a0de5c))
+- remove exact flag on npm run command ([2c367ef](https://github.com/jeremybarbet/iap/commit/2c367ef0f10b2dd32960973819f156b608a0de5c))
