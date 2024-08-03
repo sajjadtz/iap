@@ -5,7 +5,7 @@ import {
   Module,
 } from "@nestjs/common";
 
-import { IAPConfig, IAP_CONFIG, IAPService } from './iap.service';
+import { IAPConfig, IAP_CONFIG, IAPService } from "./iap.service";
 
 export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
   new ConfigurableModuleBuilder<IAPConfig>()
@@ -15,8 +15,7 @@ export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
 @Module({})
 export class IAPModule {
   static forRootAsync(
-    options: ConfigurableModuleAsyncOptions<IAPConfig>,
-    isGlobal = true
+    options: ConfigurableModuleAsyncOptions<IAPConfig>
   ): DynamicModule {
     if (!options.useFactory) {
       throw new Error(
@@ -24,7 +23,6 @@ export class IAPModule {
       );
     }
     return {
-      global: true,
       module: IAPModule,
       providers: [
         {
@@ -39,7 +37,6 @@ export class IAPModule {
 
   static forRoot(config: IAPConfig): DynamicModule {
     return {
-      global: true,
       module: IAPModule,
       providers: [
         {
