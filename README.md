@@ -1,25 +1,56 @@
-# In App Purchase
+# @jeremybarbet/nest-iap
 
-Libraries to server-side verify in-app purchases for iOS and Android. Additionally, with Google Play Billing Library version 3, can acknowledge a subscription to be successfully process by the Google Play Store.
+Wrapper around iap library to embed in NestJS applications.
 
-## Features
+## Installation
 
-- 💸 Verify in-app purchases for iOS and Android receipts in Node.js
-- 🔌 [NestJS](https://nestjs.com) wrapper to easily integrates the library in your project.
-- Uses [axios](https://github.com/axios/axios) under the hood for the requests.
-- Typescript definition for App Store Receipts, App Store Server API, Google Play Developer API and Google Play Real-time developer notifications.
-- All types come with their descriptions extracted from the Apple and Google documentations.
+```bash
+npm run add @jeremybarbet/nest-iap
+```
 
-## Installation and usage
+## Usage
 
-- [Node.js IAP](./packages/node-iap/README.md) - Core library wrapping the Apple and Google IAP APIs to get and verify in-app purchases
-- [NestJS IAP](./packages/nest-iap/README.md) - NestJS wrapper for the Node.js library.
-- [Apple API types](./packages/apple-api-types/README.md) - Typescript definitions for Apple API services.
-- [Google API types](./packages/google-api-types/README.md) - Typescript definitions for Google API services.
+```ts
+import { IAPModule } from '@jeremybarbet/nest-iap';
 
-## Acknowledgments
+@Module({
+  controllers: [...],
+  providers: [...],
+  imports: [
+    IAPModule.forRoot({
+      apple: {
+        password: '',
+      },
+      google: {
+        clientEmail: '',
+        privateKey: '',
+      },
+    }),
+  ],
+})
+```
 
-I build this library for my side-project [hello aurora](https://github.com/hello-aurora). If you find this library useful, please consider donating.
+```ts
+import { IAPService } from '@jeremybarbet/nest-iap';
+
+class MyService {
+  constructor(private readonly iapService: IAPService) {}
+
+  async someMethod() {
+    const { response } = await this.iapService.verifyAppleReceipt({
+      transactionReceipt: 'BASE_64_RECEIPT',
+    });
+  }
+
+  async someOtherMethod() {
+    const { response } = await this.iapService.verifyGoogleReceipt({
+      packageName: 'PACKAGE_NAME',
+      token: 'TOKEN',
+      productId: 'PRODUCT_ID',
+    });
+  }
+}
+```
 
 ## License
 

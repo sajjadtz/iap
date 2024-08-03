@@ -1,31 +1,26 @@
 {
-  "name": "iap",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "nest-iap",
+  "version": "1.4.1",
+  "description": "Wrapper around iap library to embed in NestJS applications.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "git@github.com:sajjadtz/iap.git",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "lerna run build",
-    "lint": "npm run lint:tsc && npm run lint:eslint && npm run lint:prettier",
-    "lint:tsc": "lerna run lint:tsc",
-    "lint:eslint": "eslint --fix '**/*.ts'",
-    "lint:prettier": "prettier --write \"packages/**/*.{ts,json,md}\"",
-    "format": "git ls-files -m | xargs npm run prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
-    "prepare": "npm run build",
-    "release": "env $(cat .env | xargs) lerna publish --no-private",
-    "release:ci": "lerna publish --yes --no-private"
+    "build": "rm -rf dist && tsc",
+    "lint:tsc": "npm run tsc -p tsconfig.json --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@jeremybarbet/node-iap": "1.4.1",
+    "@nestjs/common": "10.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.1.0",
-    "@typescript-eslint/parser": "6.1.0",
-    "conventional-changelog-conventionalcommits": "6.1.0",
-    "eslint": "8.45.0",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-prefer-arrow": "1.2.3",
-    "eslint-plugin-simple-import-sort": "9.0.0",
-    "lerna": "7.1.4",
-    "nx": "16.5.2",
-    "prettier": "3.0.0",
+    "@types/node": "20.4.2",
+    "reflect-metadata": "0.1.13",
+    "rxjs": "7.8.1",
     "typescript": "5.1.6"
   }
 }
