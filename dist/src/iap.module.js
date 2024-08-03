@@ -6,21 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var _a;
-var IAPModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IAPModule = exports.MODULE_OPTIONS_TOKEN = exports.ConfigurableModuleClass = void 0;
-const common_1 = require("@nestjs/common");
-const iap_service_1 = require("./iap.service");
-_a = new common_1.ConfigurableModuleBuilder()
+var common_1 = require("@nestjs/common");
+var iap_service_1 = require("./iap.service");
+exports.ConfigurableModuleClass = (_a = new common_1.ConfigurableModuleBuilder()
     .setClassMethodName("forRoot")
-    .build(), exports.ConfigurableModuleClass = _a.ConfigurableModuleClass, exports.MODULE_OPTIONS_TOKEN = _a.MODULE_OPTIONS_TOKEN;
-let IAPModule = exports.IAPModule = IAPModule_1 = class IAPModule {
-    static forRootAsync(options, isGlobal = true) {
+    .build(), _a.ConfigurableModuleClass), exports.MODULE_OPTIONS_TOKEN = _a.MODULE_OPTIONS_TOKEN;
+var IAPModule = exports.IAPModule = /** @class */ (function () {
+    function IAPModule() {
+    }
+    IAPModule_1 = IAPModule;
+    IAPModule.forRootAsync = function (options) {
         if (!options.useFactory) {
-            throw new Error(`The asynchronous configurations are missing. Expected : "useFactory".`);
+            throw new Error("The asynchronous configurations are missing. Expected : \"useFactory\".");
         }
         return {
-            global: true,
             module: IAPModule_1,
             providers: [
                 {
@@ -31,10 +32,9 @@ let IAPModule = exports.IAPModule = IAPModule_1 = class IAPModule {
             ],
             exports: [iap_service_1.IAPService],
         };
-    }
-    static forRoot(config) {
+    };
+    IAPModule.forRoot = function (config) {
         return {
-            global: true,
             module: IAPModule_1,
             providers: [
                 {
@@ -45,8 +45,10 @@ let IAPModule = exports.IAPModule = IAPModule_1 = class IAPModule {
             ],
             exports: [iap_service_1.IAPService],
         };
-    }
-};
-exports.IAPModule = IAPModule = IAPModule_1 = __decorate([
-    (0, common_1.Module)({})
-], IAPModule);
+    };
+    var IAPModule_1;
+    IAPModule = IAPModule_1 = __decorate([
+        (0, common_1.Module)({})
+    ], IAPModule);
+    return IAPModule;
+}());
